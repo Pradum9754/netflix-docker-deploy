@@ -1,56 +1,51 @@
-# netflix-docker-deploy
-Dockerized Netflix-style streaming application deployed on cloud VM with Nginx — fully containerized and production-ready.
+# IIS Website Deployment Guide
 
-# Netflix Docker Deployment
+This repository contains the build artifacts required to deploy a website on **Windows IIS (Internet Information Services)**.
 
-This repository contains a **Dockerized Netflix-style streaming application** deployed on a cloud VM using Nginx.
+Follow the steps below to deploy the application successfully.
 
-## Features
+## Prerequisites
 
-- Runs on **Nginx** with clean deployment
-- Full **Docker containerization**
-- Easy to build and run locally or on cloud
-- Includes a **ready-to-use Dockerfile**
+- Windows Operating System
+- Administrator access
+- Internet Information Services (IIS)
 
-## Dockerfile
+## Step 1: Install IIS on Windows
 
-```dockerfile
-FROM nginx:latest
-EXPOSE 80
-RUN rm -rf /usr/share/nginx/html/*
-COPY . /usr/share/nginx/html
-Build & Run
+1. Open **Control Panel**
+2. Go to **Programs** → **Turn Windows features on or off**
+3. Enable **Internet Information Services (IIS)**
+4. Click **OK** and wait for the installation to complete
 
-Build the Docker image:
+You can verify IIS installation by opening a browser and navigating to:  
+`http://localhost`
 
-docker build -t netflix:nginx .
+## Step 2: Download and Extract Artifacts
 
+1. Download the **ZIP artifacts** from this GitHub repository
+2. Extract the ZIP file to a temporary location on your system
 
-Run the container:
+## Step 3: Deploy Artifacts to IIS Folder
 
-docker run -d -p 80:80 netflix:nginx
+1. Navigate to the IIS default web directory:
+```
 
+C:\inetpub\wwwroot
 
-Access the app at: http://<VM_IP>
+```
+2. Copy all extracted artifact files and folders
+3. Paste them into the `wwwroot` directory
+4. If prompted, replace existing files
 
-Project Structure
-StreamFlix/
-├── Dockerfile
-├── index.html
-├── css/
-└── js/
+---
 
+## Access the Application
 
-(Replace index.html, css/, js/ with your StreamFlix app content)
+Open a browser and access:
+```
 
-Notes
+[http://localhost](http://localhost)
 
-Ensure Docker is installed on your system
+```
 
-Current deployment uses Nginx to serve the app
-
-Can be extended to multi-container setup with Docker Compose
-
-License
-
-MIT License
+Your website should now be live on IIS 🎉
